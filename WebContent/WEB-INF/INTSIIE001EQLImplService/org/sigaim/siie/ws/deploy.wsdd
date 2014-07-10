@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from INTSIIE001EQLImplService WSDL service -->
+
+  <service name="INTSIIE001EQLImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.siie.sigaim.org"/>
+      <parameter name="wsdlServiceElement" value="INTSIIE001EQLImplService"/>
+      <parameter name="schemaQualified" value="http://interfaces.siie.sigaim.org,http://ws.siie.sigaim.org,http://eql.interfaces.siie.sigaim.org"/>
+      <parameter name="wsdlServicePort" value="INTSIIE001EQLImpl"/>
+      <parameter name="className" value="org.sigaim.siie.ws.INTSIIE001EQLImpl"/>
+      <parameter name="wsdlPortType" value="INTSIIE001EQLImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://ws.siie.sigaim.org" xmlns:retNS="http://ws.siie.sigaim.org" xmlns:rtns="http://eql.interfaces.siie.sigaim.org" name="query" qname="operNS:query" returnQName="retNS:queryReturn" returnType="rtns:ReturnValueEQL" soapAction="">
+        <parameter xmlns:pns="http://ws.siie.sigaim.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:requestId" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.siie.sigaim.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:eqlQuery" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="query"/>
+
+      <typeMapping xmlns:ns="http://eql.interfaces.siie.sigaim.org" qname="ns:ReturnValueEQL" type="java:org.sigaim.siie.interfaces.eql.ReturnValueEQL" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://ws.siie.sigaim.org" xmlns:cmp-ns="http://ws.siie.sigaim.org" qname="ns:ArrayOfArrayOf_xsd_string" type="java:java.lang.String[][]" innerType="cmp-ns:ArrayOf_xsd_string" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://interfaces.siie.sigaim.org" qname="ns:IdentifiedReturnValue" type="java:org.sigaim.siie.interfaces.IdentifiedReturnValue" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://ws.siie.sigaim.org" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_string" type="java:java.lang.String[]" innerType="cmp-ns:string" encodingStyle=""/>
+  </service>
+</deployment>

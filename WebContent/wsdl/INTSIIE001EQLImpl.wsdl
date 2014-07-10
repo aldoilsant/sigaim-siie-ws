@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.siie.sigaim.org" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.siie.sigaim.org" xmlns:intf="http://ws.siie.sigaim.org" xmlns:tns1="http://eql.interfaces.siie.sigaim.org" xmlns:tns2="http://interfaces.siie.sigaim.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.siie.sigaim.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://eql.interfaces.siie.sigaim.org"/>
+   <import namespace="http://interfaces.siie.sigaim.org"/>
+   <element name="query">
+    <complexType>
+     <sequence>
+      <element name="requestId" type="xsd:string"/>
+      <element name="eqlQuery" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="queryResponse">
+    <complexType>
+     <sequence>
+      <element name="queryReturn" type="tns1:ReturnValueEQL"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_string">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfArrayOf_xsd_string">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:ArrayOf_xsd_string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://interfaces.siie.sigaim.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://eql.interfaces.siie.sigaim.org"/>
+   <import namespace="http://ws.siie.sigaim.org"/>
+   <complexType name="IdentifiedReturnValue">
+    <sequence>
+     <element name="reasonCode" nillable="true" type="xsd:string"/>
+     <element name="requestId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://eql.interfaces.siie.sigaim.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://ws.siie.sigaim.org"/>
+   <import namespace="http://interfaces.siie.sigaim.org"/>
+   <complexType name="ReturnValueEQL">
+    <complexContent>
+     <extension base="tns2:IdentifiedReturnValue">
+      <sequence>
+       <element name="resultSet" nillable="true" type="impl:ArrayOfArrayOf_xsd_string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="queryResponse">
+
+      <wsdl:part element="impl:queryResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="queryRequest">
+
+      <wsdl:part element="impl:query" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="INTSIIE001EQLImpl">
+
+      <wsdl:operation name="query">
+
+         <wsdl:input message="impl:queryRequest" name="queryRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:queryResponse" name="queryResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="INTSIIE001EQLImplSoapBinding" type="impl:INTSIIE001EQLImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="query">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="queryRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="queryResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="INTSIIE001EQLImplService">
+
+      <wsdl:port binding="impl:INTSIIE001EQLImplSoapBinding" name="INTSIIE001EQLImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/SIIEWS/services/INTSIIE001EQLImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

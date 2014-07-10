@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.siie.sigaim.org" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.siie.sigaim.org" xmlns:intf="http://ws.siie.sigaim.org" xmlns:tns1="http://reportmanagement.interfaces.siie.sigaim.org" xmlns:tns2="http://interfaces.siie.sigaim.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.siie.sigaim.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://reportmanagement.interfaces.siie.sigaim.org"/>
+   <import namespace="http://interfaces.siie.sigaim.org"/>
+   <element name="createReport">
+    <complexType>
+     <sequence>
+      <element name="requestId" type="xsd:string"/>
+      <element name="subjectOfCareId" type="xsd:string"/>
+      <element name="composerId" type="xsd:string"/>
+      <element name="audioData" type="xsd:string"/>
+      <element name="textTranscription" type="xsd:string"/>
+      <element name="reportStatus" type="xsd:string"/>
+      <element name="rootArchetypeId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createReportResponse">
+    <complexType>
+     <sequence>
+      <element name="createReportReturn" type="tns1:ReturnValueCreateReport"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createHealthcareFacility">
+    <complexType>
+     <sequence>
+      <element name="requestId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createHealthcareFacilityResponse">
+    <complexType>
+     <sequence>
+      <element name="createHealthcareFacilityReturn" type="tns1:ReturnValueCreateHealthcareFacility"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createPerformer">
+    <complexType>
+     <sequence>
+      <element name="requestId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createPerformerResponse">
+    <complexType>
+     <sequence>
+      <element name="createPerformerReturn" type="tns1:ReturnValueCreatePerformer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createSubjectOfCare">
+    <complexType>
+     <sequence>
+      <element name="requestId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createSubjectOfCareResponse">
+    <complexType>
+     <sequence>
+      <element name="createSubjectOfCareReturn" type="tns1:ReturnValueCreateSubjectOfCare"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://interfaces.siie.sigaim.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://reportmanagement.interfaces.siie.sigaim.org"/>
+   <complexType name="IdentifiedReturnValue">
+    <sequence>
+     <element name="reasonCode" nillable="true" type="xsd:string"/>
+     <element name="requestId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://reportmanagement.interfaces.siie.sigaim.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://interfaces.siie.sigaim.org"/>
+   <complexType name="ReturnValueCreateReport">
+    <complexContent>
+     <extension base="tns2:IdentifiedReturnValue">
+      <sequence>
+       <element name="serialized" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ReturnValueCreateHealthcareFacility">
+    <complexContent>
+     <extension base="tns2:IdentifiedReturnValue">
+      <sequence>
+       <element name="serialized" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ReturnValueCreatePerformer">
+    <complexContent>
+     <extension base="tns2:IdentifiedReturnValue">
+      <sequence>
+       <element name="serialized" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ReturnValueCreateSubjectOfCare">
+    <complexContent>
+     <extension base="tns2:IdentifiedReturnValue">
+      <sequence>
+       <element name="serialized" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="createSubjectOfCareResponse">
+
+      <wsdl:part element="impl:createSubjectOfCareResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createSubjectOfCareRequest">
+
+      <wsdl:part element="impl:createSubjectOfCare" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createReportRequest">
+
+      <wsdl:part element="impl:createReport" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createPerformerResponse">
+
+      <wsdl:part element="impl:createPerformerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createHealthcareFacilityResponse">
+
+      <wsdl:part element="impl:createHealthcareFacilityResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createHealthcareFacilityRequest">
+
+      <wsdl:part element="impl:createHealthcareFacility" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createPerformerRequest">
+
+      <wsdl:part element="impl:createPerformer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createReportResponse">
+
+      <wsdl:part element="impl:createReportResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="INTSIIE004ReportManagementImpl">
+
+      <wsdl:operation name="createReport">
+
+         <wsdl:input message="impl:createReportRequest" name="createReportRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createReportResponse" name="createReportResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createHealthcareFacility">
+
+         <wsdl:input message="impl:createHealthcareFacilityRequest" name="createHealthcareFacilityRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createHealthcareFacilityResponse" name="createHealthcareFacilityResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createPerformer">
+
+         <wsdl:input message="impl:createPerformerRequest" name="createPerformerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createPerformerResponse" name="createPerformerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createSubjectOfCare">
+
+         <wsdl:input message="impl:createSubjectOfCareRequest" name="createSubjectOfCareRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createSubjectOfCareResponse" name="createSubjectOfCareResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="INTSIIE004ReportManagementImplSoapBinding" type="impl:INTSIIE004ReportManagementImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="createReport">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createReportRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createReportResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createHealthcareFacility">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createHealthcareFacilityRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createHealthcareFacilityResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createPerformer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createPerformerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createPerformerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createSubjectOfCare">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createSubjectOfCareRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createSubjectOfCareResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="INTSIIE004ReportManagementImplService">
+
+      <wsdl:port binding="impl:INTSIIE004ReportManagementImplSoapBinding" name="INTSIIE004ReportManagementImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/SIIEWS/services/INTSIIE004ReportManagementImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,103 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="/Users/aldoilsant/Documents/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/SIIEWS/WEB-INF/attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="INTSIIE004ReportManagementImpl" provider="java:RPC" style="wrapped" use="literal">
+  <ns3:operation name="createReport" qname="ns1:createReport" returnQName="ns1:createReportReturn" returnType="ns2:ReturnValueCreateReport" soapAction="" xmlns:ns1="http://ws.siie.sigaim.org" xmlns:ns2="http://reportmanagement.interfaces.siie.sigaim.org" xmlns:ns3="http://xml.apache.org/axis/wsdd/">
+   <ns3:parameter qname="ns1:requestId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns3:parameter qname="ns1:subjectOfCareId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns3:parameter qname="ns1:composerId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns3:parameter qname="ns1:audioData" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns3:parameter qname="ns1:textTranscription" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns3:parameter qname="ns1:reportStatus" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns3:parameter qname="ns1:rootArchetypeId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns3:operation>
+  <ns1:operation name="createHealthcareFacility" qname="ns3:createHealthcareFacility" returnQName="ns3:createHealthcareFacilityReturn" returnType="ns4:ReturnValueCreateHealthcareFacility" soapAction="" xmlns:ns3="http://ws.siie.sigaim.org" xmlns:ns4="http://reportmanagement.interfaces.siie.sigaim.org">
+   <ns1:parameter qname="ns3:requestId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="createPerformer" qname="ns5:createPerformer" returnQName="ns5:createPerformerReturn" returnType="ns6:ReturnValueCreatePerformer" soapAction="" xmlns:ns5="http://ws.siie.sigaim.org" xmlns:ns6="http://reportmanagement.interfaces.siie.sigaim.org">
+   <ns1:parameter qname="ns5:requestId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="createSubjectOfCare" qname="ns7:createSubjectOfCare" returnQName="ns7:createSubjectOfCareReturn" returnType="ns8:ReturnValueCreateSubjectOfCare" soapAction="" xmlns:ns7="http://ws.siie.sigaim.org" xmlns:ns8="http://reportmanagement.interfaces.siie.sigaim.org">
+   <ns1:parameter qname="ns7:requestId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="createHealthcareFacility createPerformer createSubjectOfCare createReport"/>
+  <ns1:parameter name="wsdlPortType" value="INTSIIE004ReportManagementImpl"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://reportmanagement.interfaces.siie.sigaim.org,http://interfaces.siie.sigaim.org,http://ws.siie.sigaim.org"/>
+  <ns1:parameter name="wsdlServicePort" value="INTSIIE004ReportManagementImpl"/>
+  <ns1:parameter name="className" value="org.sigaim.siie.ws.INTSIIE004ReportManagementImpl"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://ws.siie.sigaim.org"/>
+  <ns1:parameter name="wsdlServiceElement" value="INTSIIE004ReportManagementImplService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns9:ReturnValueCreateHealthcareFacility" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.sigaim.siie.interfaces.reportmanagement.ReturnValueCreateHealthcareFacility" xmlns:ns9="http://reportmanagement.interfaces.siie.sigaim.org"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns10:ReturnValueCreateSubjectOfCare" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.sigaim.siie.interfaces.reportmanagement.ReturnValueCreateSubjectOfCare" xmlns:ns10="http://reportmanagement.interfaces.siie.sigaim.org"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns11:ReturnValueCreateReport" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.sigaim.siie.interfaces.reportmanagement.ReturnValueCreateReport" xmlns:ns11="http://reportmanagement.interfaces.siie.sigaim.org"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns12:IdentifiedReturnValue" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.sigaim.siie.interfaces.IdentifiedReturnValue" xmlns:ns12="http://interfaces.siie.sigaim.org"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns13:ReturnValueCreatePerformer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.sigaim.siie.interfaces.reportmanagement.ReturnValueCreatePerformer" xmlns:ns13="http://reportmanagement.interfaces.siie.sigaim.org"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="INTSIIE001EQLImpl" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="query" qname="ns14:query" returnQName="ns14:queryReturn" returnType="ns15:ReturnValueEQL" soapAction="" xmlns:ns14="http://ws.siie.sigaim.org" xmlns:ns15="http://eql.interfaces.siie.sigaim.org">
+   <ns1:parameter qname="ns14:requestId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns14:eqlQuery" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="query"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="INTSIIE001EQLImpl"/>
+  <ns1:parameter name="className" value="org.sigaim.siie.ws.INTSIIE001EQLImpl"/>
+  <ns1:parameter name="wsdlServicePort" value="INTSIIE001EQLImpl"/>
+  <ns1:parameter name="schemaQualified" value="http://interfaces.siie.sigaim.org,http://ws.siie.sigaim.org,http://eql.interfaces.siie.sigaim.org"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://ws.siie.sigaim.org"/>
+  <ns1:parameter name="wsdlServiceElement" value="INTSIIE001EQLImplService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns16:ReturnValueEQL" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.sigaim.siie.interfaces.eql.ReturnValueEQL" xmlns:ns16="http://eql.interfaces.siie.sigaim.org"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns17:IdentifiedReturnValue" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.sigaim.siie.interfaces.IdentifiedReturnValue" xmlns:ns17="http://interfaces.siie.sigaim.org"/>
+  <ns1:arrayMapping innerType="ns18:ArrayOf_xsd_string" languageSpecificType="java:java.lang.String[][]" qname="ns18:ArrayOfArrayOf_xsd_string" xmlns:ns18="http://ws.siie.sigaim.org"/>
+  <ns1:arrayMapping innerType="xsd:string" languageSpecificType="java:java.lang.String[]" qname="ns19:ArrayOf_xsd_string" xmlns:ns19="http://ws.siie.sigaim.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

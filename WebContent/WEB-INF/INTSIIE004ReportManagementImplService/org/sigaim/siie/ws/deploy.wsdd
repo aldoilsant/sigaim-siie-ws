@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from INTSIIE004ReportManagementImplService WSDL service -->
+
+  <service name="INTSIIE004ReportManagementImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.siie.sigaim.org"/>
+      <parameter name="wsdlServiceElement" value="INTSIIE004ReportManagementImplService"/>
+      <parameter name="schemaQualified" value="http://reportmanagement.interfaces.siie.sigaim.org,http://interfaces.siie.sigaim.org,http://ws.siie.sigaim.org"/>
+      <parameter name="wsdlServicePort" value="INTSIIE004ReportManagementImpl"/>
+      <parameter name="className" value="org.sigaim.siie.ws.INTSIIE004ReportManagementImpl"/>
+      <parameter name="wsdlPortType" value="INTSIIE004ReportManagementImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://ws.siie.sigaim.org" xmlns:retNS="http://ws.siie.sigaim.org" xmlns:rtns="http://reportmanagement.interfaces.siie.sigaim.org" name="createReport" qname="operNS:createReport" returnQName="retNS:createReportReturn" returnType="rtns:ReturnValueCreateReport" soapAction="">
+        <parameter xmlns:pns="http://ws.siie.sigaim.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:requestId" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.siie.sigaim.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:subjectOfCareId" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.siie.sigaim.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:composerId" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.siie.sigaim.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:audioData" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.siie.sigaim.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:textTranscription" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.siie.sigaim.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:reportStatus" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.siie.sigaim.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:rootArchetypeId" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.siie.sigaim.org" xmlns:retNS="http://ws.siie.sigaim.org" xmlns:rtns="http://reportmanagement.interfaces.siie.sigaim.org" name="createHealthcareFacility" qname="operNS:createHealthcareFacility" returnQName="retNS:createHealthcareFacilityReturn" returnType="rtns:ReturnValueCreateHealthcareFacility" soapAction="">
+        <parameter xmlns:pns="http://ws.siie.sigaim.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:requestId" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.siie.sigaim.org" xmlns:retNS="http://ws.siie.sigaim.org" xmlns:rtns="http://reportmanagement.interfaces.siie.sigaim.org" name="createPerformer" qname="operNS:createPerformer" returnQName="retNS:createPerformerReturn" returnType="rtns:ReturnValueCreatePerformer" soapAction="">
+        <parameter xmlns:pns="http://ws.siie.sigaim.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:requestId" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.siie.sigaim.org" xmlns:retNS="http://ws.siie.sigaim.org" xmlns:rtns="http://reportmanagement.interfaces.siie.sigaim.org" name="createSubjectOfCare" qname="operNS:createSubjectOfCare" returnQName="retNS:createSubjectOfCareReturn" returnType="rtns:ReturnValueCreateSubjectOfCare" soapAction="">
+        <parameter xmlns:pns="http://ws.siie.sigaim.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:requestId" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="createHealthcareFacility createPerformer createSubjectOfCare createReport"/>
+
+      <typeMapping xmlns:ns="http://reportmanagement.interfaces.siie.sigaim.org" qname="ns:ReturnValueCreateHealthcareFacility" type="java:org.sigaim.siie.interfaces.reportmanagement.ReturnValueCreateHealthcareFacility" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://reportmanagement.interfaces.siie.sigaim.org" qname="ns:ReturnValueCreateSubjectOfCare" type="java:org.sigaim.siie.interfaces.reportmanagement.ReturnValueCreateSubjectOfCare" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://reportmanagement.interfaces.siie.sigaim.org" qname="ns:ReturnValueCreateReport" type="java:org.sigaim.siie.interfaces.reportmanagement.ReturnValueCreateReport" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://interfaces.siie.sigaim.org" qname="ns:IdentifiedReturnValue" type="java:org.sigaim.siie.interfaces.IdentifiedReturnValue" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://reportmanagement.interfaces.siie.sigaim.org" qname="ns:ReturnValueCreatePerformer" type="java:org.sigaim.siie.interfaces.reportmanagement.ReturnValueCreatePerformer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
