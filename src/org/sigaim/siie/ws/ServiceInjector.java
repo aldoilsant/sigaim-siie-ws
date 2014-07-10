@@ -1,5 +1,9 @@
 package org.sigaim.siie.ws;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import org.sigaim.siie.dadl.DADLManager;
 import org.sigaim.siie.dadl.OpenEHRDADLManager;
 import org.sigaim.siie.db.PersistenceManager;
@@ -26,12 +30,22 @@ public class ServiceInjector {
 	private SEQLEngine seqlEngine;
 	private IntSIIE001EQL intSIIE001EQL;
 	private IntSIIE004ReportManagement intSIIE004ReportManagement;
+	private DataSource dbDataSource;
 	
 	private ServiceInjector(){
 		try {
+			//Get the database resource
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			DataSource ds = (DataSource)envCtx.lookup("jdbc/SIGAIMSIIE");
+			if(ds==null) {
+				throw new IllegalArgumentException("Invalid database datasource");
+			} else {
+				dbDataSource=ds;
+			}
 			this.dadlManager=new OpenEHRDADLManager();
 			this.referenceModelManager=new ReflectorReferenceModelManager(this.dadlManager);
-			SQLPersistenceManager sqlManager=new SQLPersistenceManager();
+			SQLPersistenceManager sqlManager=new SQLPersistenceManager(ds);
 			sqlManager.setDADLManager(this.dadlManager);
 			sqlManager.setReferenceModelManager(this.referenceModelManager);
 			this.persistenceManager=sqlManager;
