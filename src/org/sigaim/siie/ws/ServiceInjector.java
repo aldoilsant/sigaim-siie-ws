@@ -53,6 +53,7 @@ public class ServiceInjector {
 			sqlManager.setDADLManager(this.dadlManager);
 			sqlManager.setReferenceModelManager(this.referenceModelManager);
 			this.persistenceManager=sqlManager;
+			System.out.println("New SAPRM...");
 			if(useSaprm) {
 				this.saprm=new DelegatingSigaimIntSIIE004SAPRM();
 			} else {
@@ -65,6 +66,7 @@ public class ServiceInjector {
 			this.seqlEngine=engine;
 			this.intSIIE001EQL=new SigaimIntSIIE001EQL(engine,dadlManager);
 			this.intSIIE004ReportManagement=new SigaimIntSIIE004ReportManagement(persistenceManager,referenceModelManager,dadlManager,saprm,engine);
+			System.out.println("Service injector ready");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
