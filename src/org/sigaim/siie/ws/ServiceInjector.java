@@ -12,6 +12,7 @@ import org.sigaim.siie.interfaces.eql.IntSIIE001EQL;
 import org.sigaim.siie.interfaces.eql.sigaim.SigaimIntSIIE001EQL;
 import org.sigaim.siie.interfaces.reportmanagement.IntSIIE004ReportManagement;
 import org.sigaim.siie.interfaces.reportmanagement.sigaim.SigaimIntSIIE004ReportManagement;
+import org.sigaim.siie.interfaces.saprm.DelegatingSigaimIntSIIE004SAPRM;
 import org.sigaim.siie.interfaces.saprm.DummyINT004SIIESAPRMProxy;
 import org.sigaim.siie.interfaces.saprm.INT004SIIESAPRMProxy;
 import org.sigaim.siie.rm.ReferenceModelManager;
@@ -38,6 +39,9 @@ public class ServiceInjector {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			DataSource ds = (DataSource)envCtx.lookup("jdbc/SIGAIMSIIE");
+			Boolean useSaprm = (Boolean) envCtx.lookup("conf/USESAPRM");
+
+			System.out.println("Using real saprm: "+useSaprm);
 			if(ds==null) {
 				throw new IllegalArgumentException("Invalid database datasource");
 			} else {
@@ -49,7 +53,11 @@ public class ServiceInjector {
 			sqlManager.setDADLManager(this.dadlManager);
 			sqlManager.setReferenceModelManager(this.referenceModelManager);
 			this.persistenceManager=sqlManager;
-			this.saprm=new DummyINT004SIIESAPRMProxy();
+			if(useSaprm) {
+				this.saprm=new DelegatingSigaimIntSIIE004SAPRM();
+			} else {
+				this.saprm=new DummyINT004SIIESAPRMProxy();				
+			}
 			SEQLExecutionMemorySolverStage stage=new SEQLExecutionMemorySolverStage(persistenceManager,referenceModelManager,dadlManager);
 			SEQLPipeEngine engine=new SEQLPipeEngine();
 			engine.addPreprocessStage(new SEQLPreprocessingValidateIdentifiedVariablesStage());
